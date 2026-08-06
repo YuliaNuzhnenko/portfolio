@@ -98,10 +98,42 @@
         .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            align-items: center;
             padding: 0 10%;
             position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-placeholder {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 2px dashed var(--accent-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.1);
         }
 
         .hero h1 {
@@ -279,7 +311,7 @@
     <div class="bg-glow-2"></div>
 
     <nav>
-        <div class="logo">Bio<span>OS</span></div>
+        <div class="logo">Yulia <span>Nuzhnenko</span></div>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Capabilities</a>
@@ -289,10 +321,21 @@
     </nav>
 
     <section class="hero" id="about">
-        <h1>Yulia<br>Nuzhnenko</h1>
-        <p>Advanced Computational Biologist & Data Scientist. Transforming raw multi-omics data into publication-ready insights.</p>
-        <div>
-            <a href="#portfolio" class="cta-btn">View My Work</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Yulia<br>Nuzhnenko</h1>
+                <p>Advanced Computational Biologist & Data Scientist. Transforming raw multi-omics data into publication-ready insights.</p>
+                <div>
+                    <a href="#portfolio" class="cta-btn">View My Work</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- ЗАМЕНИТЕ ЭТОТ БЛОК НА ТЕГ <img ... > -->
+                <div class="photo-placeholder">
+                    [ ВСТАВИТЬ ВАШЕ ФОТО (круглое) ]<br><br>
+                    <span style="font-size: 0.8rem;">например: &lt;img src="my_photo.jpg" style="width: 350px; height: 350px; border-radius: 50%; object-fit: cover; border: 4px solid #00f0ff; box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);"&gt;</span>
+                </div>
+            </div>
         </div>
     </section>
 
