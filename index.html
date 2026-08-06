@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yulia Nuzhnenko | Computational Biologist</title>
+    <title>Forneus Technologies | Bioinformatics & AI Solutions</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <!-- Icons -->
@@ -126,20 +126,6 @@
             align-items: center;
         }
 
-        .photo-placeholder {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            border: 2px dashed var(--accent-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.1);
-        }
-
         .hero h1 {
             font-family: 'Outfit', sans-serif;
             font-size: 5rem;
@@ -149,31 +135,6 @@
             background: linear-gradient(90deg, #fff, var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--bg-color);
-            background: var(--accent-primary);
-            text-decoration: none;
-            border-radius: 30px;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .cta-btn:hover {
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
-            transform: translateY(-3px);
         }
 
         /* Services / Tech Stack */
@@ -248,6 +209,7 @@
             transform: translateY(-5px);
         }
 
+        /* Portfolio Image Container & Gallery Styles */
         .portfolio-img-container {
             width: 100%;
             height: 250px;
@@ -258,13 +220,43 @@
             position: relative;
             overflow: hidden;
         }
-        
-        /* Placeholder styling before real images are added */
-        .placeholder-text {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 20px;
+        .portfolio-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .portfolio-img-container img.active {
+            display: block;
+        }
+        .gallery-nav {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            background: rgba(5, 11, 20, 0.85);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            z-index: 10;
+        }
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery-dot:hover {
+            background: rgba(255,255,255,0.7);
+        }
+        .gallery-dot.active {
+            background: var(--accent-primary);
+            box-shadow: 0 0 8px var(--accent-primary);
+            transform: scale(1.2);
         }
 
         .portfolio-info { padding: 30px; }
@@ -398,8 +390,13 @@
             
             <!-- Case 1: AMR -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 1 МОДУЛЯ: AMR Analyst ]</div>
+                <div class="portfolio-img-container" id="gallery-1">
+                    <img src="case1.png" class="active">
+                    <img src="case1_2.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(1, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(1, 1)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>Antimicrobial Resistance Profiling</h3>
@@ -414,8 +411,8 @@
 
             <!-- Case 2: RAG -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 2 МОДУЛЯ: PubMed RAG ]</div>
+                <div class="portfolio-img-container" id="gallery-2">
+                    <img src="case2.png" class="active">
                 </div>
                 <div class="portfolio-info">
                     <h3>Automated Systematic Reviews</h3>
@@ -430,8 +427,13 @@
 
             <!-- Case 3: OmicsVis -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 3 МОДУЛЯ: OmicsVis ]</div>
+                <div class="portfolio-img-container" id="gallery-3">
+                    <img src="case3.png" class="active">
+                    <img src="case3_1.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(3, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(3, 1)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>Gene Expression Profiling</h3>
@@ -446,8 +448,15 @@
 
             <!-- Case 4: Single Cell -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 4 МОДУЛЯ: Single Cell ]</div>
+                <div class="portfolio-img-container" id="gallery-4">
+                    <img src="case4.png" class="active">
+                    <img src="case4._1.png">
+                    <img src="case4._2.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(4, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(4, 1)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(4, 2)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>Single-Cell Subpopulation Discovery</h3>
@@ -462,8 +471,15 @@
 
             <!-- Case 5: Protein Modeler -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 5 МОДУЛЯ: Protein Modeler ]</div>
+                <div class="portfolio-img-container" id="gallery-5">
+                    <img src="case5.png" class="active">
+                    <img src="case5_1.png">
+                    <img src="case5_2.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(5, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(5, 1)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(5, 2)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>3D Protein Binding Pocket Analysis</h3>
@@ -478,8 +494,13 @@
 
             <!-- Case 6: Variant Annotator -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 6 МОДУЛЯ: Variant Annotator ]</div>
+                <div class="portfolio-img-container" id="gallery-6">
+                    <img src="case6.png" class="active">
+                    <img src="case6_1.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(6, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(6, 1)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>Clinical VCF Variant Annotation</h3>
@@ -494,8 +515,8 @@
 
             <!-- Case 7: Genome Browser -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 7 МОДУЛЯ: Genome Browser ]</div>
+                <div class="portfolio-img-container" id="gallery-7">
+                    <img src="case7.png" class="active">
                 </div>
                 <div class="portfolio-info">
                     <h3>Interactive Genomics Viewer (IGV)</h3>
@@ -510,8 +531,13 @@
 
             <!-- Case 8: GEO Data Miner & GSEA -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 8 МОДУЛЯ: GEO Data Miner ]</div>
+                <div class="portfolio-img-container" id="gallery-8">
+                    <img src="case8.png" class="active">
+                    <img src="case8_1.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(8, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(8, 1)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>NCBI GEO Mining & Pathway Enrichment</h3>
@@ -526,8 +552,13 @@
 
             <!-- Case 9: Pipeline Architect -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 9 МОДУЛЯ: Pipeline Architect ]</div>
+                <div class="portfolio-img-container" id="gallery-9">
+                    <img src="case9.png" class="active">
+                    <img src="case9_1.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(9, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(9, 1)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>Cloud-Native Bioinformatics Pipelines</h3>
@@ -542,8 +573,15 @@
 
             <!-- Case 10: Microbiome -->
             <div class="portfolio-card">
-                <div class="portfolio-img-container">
-                    <div class="placeholder-text">[ ВСТАВИТЬ СЮДА СКРИНШОТ ИЗ 10 МОДУЛЯ: Microbiome ]</div>
+                <div class="portfolio-img-container" id="gallery-10">
+                    <img src="case10.png" class="active">
+                    <img src="case10_1.png">
+                    <img src="case10_2.png">
+                    <div class="gallery-nav">
+                        <span class="gallery-dot active" onclick="switchSlide(10, 0)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(10, 1)"></span>
+                        <span class="gallery-dot" onclick="switchSlide(10, 2)"></span>
+                    </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>Metagenomic Dysbiosis Profiling</h3>
@@ -569,7 +607,23 @@
         </div>
     </footer>
 
+    <script>
+        function switchSlide(cardId, slideIndex) {
+            const container = document.getElementById('gallery-' + cardId);
+            const images = container.querySelectorAll('img');
+            const dots = container.querySelectorAll('.gallery-dot');
+            
+            for (let i = 0; i < images.length; i++) {
+                images[i].classList.remove('active');
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            images[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
-< ! - -   T r i g g e r   r e b u i l d   - - >  
- 
