@@ -225,6 +225,11 @@
             height: 100%;
             object-fit: cover;
             display: none;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-img-container img:hover {
+            transform: scale(1.03);
         }
         .portfolio-img-container img.active {
             display: block;
@@ -257,6 +262,47 @@
             background: var(--accent-primary);
             box-shadow: 0 0 8px var(--accent-primary);
             transform: scale(1.2);
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 11, 20, 0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
+            border: 2px solid rgba(0, 240, 255, 0.2);
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .lightbox-close:hover {
+            color: var(--accent-primary);
         }
 
         .portfolio-info { padding: 30px; }
@@ -391,11 +437,11 @@
             <!-- Case 1: AMR -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-1">
-                    <img src="case1.png" class="active">
-                    <img src="case1_2.png">
+                    <img src="case1.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case1_2.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(1, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(1, 1)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(1, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(1, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -412,7 +458,7 @@
             <!-- Case 2: RAG -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-2">
-                    <img src="case2.png" class="active">
+                    <img src="case2.png" class="active" onclick="openLightbox(this.src)">
                 </div>
                 <div class="portfolio-info">
                     <h3>Automated Systematic Reviews</h3>
@@ -428,11 +474,11 @@
             <!-- Case 3: OmicsVis -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-3">
-                    <img src="case3.png" class="active">
-                    <img src="case3_1.png">
+                    <img src="case3.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case3_1.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(3, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(3, 1)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(3, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(3, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -449,13 +495,13 @@
             <!-- Case 4: Single Cell -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-4">
-                    <img src="case4.png" class="active">
-                    <img src="case4._1.png">
-                    <img src="case4._2.png">
+                    <img src="case4.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case4._1.png" onclick="openLightbox(this.src)">
+                    <img src="case4._2.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(4, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(4, 1)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(4, 2)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(4, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(4, 1)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(4, 2)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -472,13 +518,13 @@
             <!-- Case 5: Protein Modeler -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-5">
-                    <img src="case5.png" class="active">
-                    <img src="case5_1.png">
-                    <img src="case5_2.png">
+                    <img src="case5.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case5_1.png" onclick="openLightbox(this.src)">
+                    <img src="case5_2.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(5, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(5, 1)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(5, 2)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(5, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(5, 1)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(5, 2)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -495,11 +541,11 @@
             <!-- Case 6: Variant Annotator -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-6">
-                    <img src="case6.png" class="active">
-                    <img src="case6_1.png">
+                    <img src="case6.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case6_1.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(6, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(6, 1)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(6, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(6, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -516,7 +562,7 @@
             <!-- Case 7: Genome Browser -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-7">
-                    <img src="case7.png" class="active">
+                    <img src="case7.png" class="active" onclick="openLightbox(this.src)">
                 </div>
                 <div class="portfolio-info">
                     <h3>Interactive Genomics Viewer (IGV)</h3>
@@ -532,11 +578,11 @@
             <!-- Case 8: GEO Data Miner & GSEA -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-8">
-                    <img src="case8.png" class="active">
-                    <img src="case8_1.png">
+                    <img src="case8.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case8_1.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(8, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(8, 1)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(8, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(8, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -553,11 +599,11 @@
             <!-- Case 9: Pipeline Architect -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-9">
-                    <img src="case9.png" class="active">
-                    <img src="case9_1.png">
+                    <img src="case9.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case9_1.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(9, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(9, 1)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(9, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(9, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -574,13 +620,13 @@
             <!-- Case 10: Microbiome -->
             <div class="portfolio-card">
                 <div class="portfolio-img-container" id="gallery-10">
-                    <img src="case10.png" class="active">
-                    <img src="case10_1.png">
-                    <img src="case10_2.png">
+                    <img src="case10.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case10_1.png" onclick="openLightbox(this.src)">
+                    <img src="case10_2.png" onclick="openLightbox(this.src)">
                     <div class="gallery-nav">
-                        <span class="gallery-dot active" onclick="switchSlide(10, 0)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(10, 1)"></span>
-                        <span class="gallery-dot" onclick="switchSlide(10, 2)"></span>
+                        <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(10, 0)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(10, 1)"></span>
+                        <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(10, 2)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -607,6 +653,12 @@
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation();">
+    </div>
+
     <script>
         function switchSlide(cardId, slideIndex) {
             const container = document.getElementById('gallery-' + cardId);
@@ -623,6 +675,26 @@
             images[slideIndex].classList.add('active');
             dots[slideIndex].classList.add('active');
         }
+
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // block page scroll when zoom active
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // enable scroll
+        }
+
+        // Close on Esc key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
     </script>
 
 </body>
