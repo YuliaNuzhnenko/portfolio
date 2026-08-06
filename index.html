@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yulia Nuzhnenko | Computational Biologist</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050b14;
+            --surface-color: #0a1428;
+            --accent-primary: #00f0ff;
+            --accent-secondary: #7000ff;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Gradients */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 60%);
+            z-index: -1;
+            animation: pulse 10s infinite alternate;
+        }
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 60%);
+            z-index: -1;
+            animation: pulse 12s infinite alternate-reverse;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 10%;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(5, 11, 20, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .logo span { color: var(--accent-primary); }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--accent-primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #fff, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bg-color);
+            background: var(--accent-primary);
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .cta-btn:hover {
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Services / Tech Stack */
+        .section {
+            padding: 100px 10%;
+        }
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .section-title span { color: var(--accent-secondary); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--surface-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .skill-card:hover::before { transform: translateX(100%); }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+        }
+        .skill-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .skill-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Portfolio / Case Studies */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .portfolio-card {
+            background: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .portfolio-card:hover {
+            border-color: var(--accent-secondary);
+            box-shadow: 0 15px 30px rgba(112, 0, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .portfolio-img-container {
+            width: 100%;
+            height: 250px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Placeholder styling before real images are added */
+        .placeholder-text {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .portfolio-info { padding: 30px; }
+        .portfolio-info h3 { font-size: 1.6rem; color: #fff; margin-bottom: 10px; font-family: 'Outfit', sans-serif;}
+        .portfolio-info p { color: var(--text-muted); margin-bottom: 20px; }
+        
+        .tags { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        /* Footer / Contact */
+        footer {
+            background: var(--surface-color);
+            padding: 80px 10%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer h2 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; font-family: 'Outfit', sans-serif;}
+        footer p { color: var(--text-muted); margin-bottom: 40px; font-size: 1.2rem; }
+        .contact-btn {
+            background: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        .contact-btn:hover {
+            background: var(--accent-primary);
+            color: var(--bg-color);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <nav>
+        <div class="logo">Bio<span>OS</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Capabilities</a>
+            <a href="#portfolio">Case Studies</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="about">
+        <h1>Yulia<br>Nuzhnenko</h1>
+        <p>Advanced Computational Biologist & Data Scientist. Transforming raw multi-omics data into publication-ready insights.</p>
+        <div>
+            <a href="#portfolio" class="cta-btn">View My Work</a>
+        </div>
+    </section>
+
+    <section class="section" id="skills">
+        <h2 class="section-title">My <span>Capabilities</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fa-solid fa-dna skill-icon"></i>
+                <h3>Transcriptomics (RNA-Seq)</h3>
+                <p>Differential Expression Analysis (DESeq2/limma), Pathway Enrichment (GSEA/KEGG), and custom high-res visualizations (Volcano plots, Heatmaps).</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-microscope skill-icon"></i>
+                <h3>Single-Cell Analysis</h3>
+                <p>Unsupervised clustering, UMAP/t-SNE dimensionality reduction, and cell type annotation using Scanpy and Seurat.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-server skill-icon"></i>
+                <h3>HPC Cloud Pipelines</h3>
+                <p>Scalable cloud-native workflow generation using Nextflow and WDL/Cromwell for AWS and Google Cloud environments.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-viruses skill-icon"></i>
+                <h3>Clinical Variant Annotation</h3>
+                <p>Parsing VCF files, prioritizing pathogenic somatic/germline variants via Ensembl VEP, and pharmacogenomics reporting.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="portfolio">
+        <h2 class="section-title">Featured <span>Case Studies</span></h2>
+        <div class="portfolio-grid">
+            
+            <!-- Case 1 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-container">
+                    <!-- Замените этот div на тег img после скачивания картинки -->
+                    <div class="placeholder-text">[ Insert Volcano Plot / Heatmap Image Here ]</div>
+                    <!-- Пример: <img src="images/rna_seq.png" style="width:100%; height:100%; object-fit:cover;"> -->
+                </div>
+                <div class="portfolio-info">
+                    <h3>Gene Expression Profiling</h3>
+                    <p>Processed raw RNA-seq counts to identify DEGs. Delivered publication-ready interactive Volcano plots and clustered heatmaps.</p>
+                    <div class="tags">
+                        <span class="tag">RNA-Seq</span>
+                        <span class="tag">limma</span>
+                        <span class="tag">DataViz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-container">
+                    <div class="placeholder-text">[ Insert UMAP / Single-Cell Image Here ]</div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Single-Cell Subpopulation Discovery</h3>
+                    <p>Performed clustering on 10X Genomics scRNA-seq data to map immune cell trajectories and discover novel rare cell biomarkers.</p>
+                    <div class="tags">
+                        <span class="tag">scRNA-Seq</span>
+                        <span class="tag">Scanpy</span>
+                        <span class="tag">UMAP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-container">
+                    <div class="placeholder-text">[ Insert 3D Protein Structure Image Here ]</div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>3D Protein Binding Pocket Analysis</h3>
+                    <p>Visualized AlphaFold predicted structures to evaluate the impact of clinical missense mutations on drug binding affinity.</p>
+                    <div class="tags">
+                        <span class="tag">AlphaFold DB</span>
+                        <span class="tag">py3Dmol</span>
+                        <span class="tag">Cheminformatics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 4 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-container">
+                    <div class="placeholder-text">[ Insert Microbiome 3D PCoA Image Here ]</div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Metagenomic Dysbiosis Profiling</h3>
+                    <p>Calculated Alpha/Beta diversity from 16S microbiome ASV tables, delivering interactive 3D PCoA projections and taxonomy bar charts.</p>
+                    <div class="tags">
+                        <span class="tag">16S rRNA</span>
+                        <span class="tag">Microbiome</span>
+                        <span class="tag">Diversity</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Ready to Accelerate Your Research?</h2>
+        <p>I operate entirely asynchronously via text/Upwork chat for maximum accuracy and efficiency.<br>No video calls needed—just send your dataset and requirements.</p>
+        <a href="#" class="contact-btn"><i class="fa-solid fa-paper-plane"></i> Invite Me on Upwork</a>
+    </footer>
+
+</body>
+</html>
