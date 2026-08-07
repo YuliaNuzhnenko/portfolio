@@ -202,6 +202,9 @@
             border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.4s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .portfolio-card:hover {
             border-color: var(--accent-secondary);
@@ -225,11 +228,7 @@
             height: 100%;
             object-fit: cover;
             display: none;
-            cursor: zoom-in;
             transition: transform 0.3s ease;
-        }
-        .portfolio-img-container img:hover {
-            transform: scale(1.03);
         }
         .portfolio-img-container img.active {
             display: block;
@@ -264,86 +263,230 @@
             transform: scale(1.2);
         }
 
-        /* Lightbox Modal */
+        .portfolio-info { padding: 30px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;}
+        .portfolio-info h3 { font-size: 1.6rem; color: #fff; margin-bottom: 10px; font-family: 'Outfit', sans-serif;}
+        .portfolio-info p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .read-more-btn {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.2s;
+        }
+        .portfolio-card:hover .read-more-btn {
+            gap: 10px;
+        }
+
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+        }
+
+        /* ── Project Folder Modal ── */
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 900;
+            inset: 0;
+            background: rgba(5, 11, 20, 0.97);
+            backdrop-filter: blur(20px);
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .modal-card {
+            background: var(--surface-color);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 80px rgba(0, 240, 255, 0.15);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Modal Header */
+        .modal-header {
+            padding: 30px 36px 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            position: sticky; top: 0;
+            background: var(--surface-color);
+            z-index: 10;
+        }
+        .modal-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.9rem; color: #fff; line-height: 1.2;
+        }
+        .modal-header-sub {
+            color: var(--accent-primary);
+            font-size: 0.85rem; margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+        .modal-close {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close:hover { background: rgba(255,0,80,0.2); color: #fff; }
+
+        /* Modal Body */
+        .modal-body { padding: 30px 36px 36px; }
+
+        /* Info row */
+        .modal-meta {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;
+        }
+        .modal-meta .tag {
+            background: rgba(112,0,255,0.12);
+            color: #a78bfa;
+            border-color: rgba(112,0,255,0.3);
+        }
+
+        /* Description block */
+        .modal-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .modal-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+        .modal-data-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-size: 0.9rem;
+            display: flex; flex-direction: column; gap: 10px;
+            margin-bottom: 30px;
+        }
+        .modal-data-box .row { display: flex; gap: 10px; align-items: flex-start; }
+        .modal-data-box .row i { color: var(--accent-primary); margin-top: 3px; flex-shrink: 0; }
+        .modal-data-box .row span { color: var(--text-muted); }
+        .modal-data-box .row strong { color: #fff; }
+
+        /* Photos grid */
+        .photos-label {
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--accent-primary);
+            font-weight: 700; margin-bottom: 16px;
+        }
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        .photo-item {
+            background: #02060c;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: zoom-in;
+        }
+        .photo-item:hover {
+            border-color: rgba(0,240,255,0.4);
+            box-shadow: 0 8px 30px rgba(0,240,255,0.1);
+        }
+        .photo-item img {
+            width: 100%; display: block;
+            max-height: 280px;
+            object-fit: contain;
+            background: #000;
+        }
+        .photo-caption {
+            padding: 12px 16px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .photo-num {
+            display: inline-block;
+            background: rgba(0,240,255,0.1);
+            color: var(--accent-primary);
+            border-radius: 4px;
+            padding: 1px 7px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        /* Lightbox */
         .lightbox-modal {
             display: none;
             position: fixed;
             z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(5, 11, 20, 0.95);
+            inset: 0;
+            background: rgba(5,11,20,0.97);
             backdrop-filter: blur(10px);
             justify-content: center;
             align-items: center;
         }
         .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
-            border: 2px solid rgba(0, 240, 255, 0.2);
+            max-width: 95vw; max-height: 92vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,240,255,0.3);
+            border: 1px solid rgba(0,240,255,0.2);
             object-fit: contain;
-            animation: zoomIn 0.3s ease;
+            animation: zoomIn 0.2s ease;
         }
         @keyframes zoomIn {
-            from { transform: scale(0.95); opacity: 0; }
+            from { transform: scale(0.96); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
         .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
+            position: absolute; top: 24px; right: 36px;
+            color: #fff; font-size: 2.5rem;
+            font-weight: 300; cursor: pointer;
+            transition: color 0.2s; line-height: 1;
         }
-        .lightbox-close:hover {
-            color: var(--accent-primary);
-        }
+        .lightbox-close:hover { color: var(--accent-primary); }
 
-        .portfolio-info { padding: 30px; }
-        .portfolio-info h3 { font-size: 1.6rem; color: #fff; margin-bottom: 10px; font-family: 'Outfit', sans-serif;}
-        .portfolio-info p { color: var(--text-muted); margin-bottom: 20px; }
-        
-        .tags { display: flex; gap: 10px; flex-wrap: wrap; }
-        .tag {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            border: 1px solid rgba(0, 240, 255, 0.2);
-        }
-
-        /* Footer / Contact */
-        footer {
-            background: var(--surface-color);
-            padding: 80px 10%;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        footer h2 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; font-family: 'Outfit', sans-serif;}
-        footer p { color: var(--text-muted); margin-bottom: 40px; font-size: 1.2rem; }
-        .contact-btn {
-            background: transparent;
-            color: var(--accent-primary);
-            border: 2px solid var(--accent-primary);
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 700;
-        }
-        .contact-btn:hover {
-            background: var(--accent-primary);
-            color: var(--bg-color);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        @media (max-width: 700px) {
+            .modal-header, .modal-body { padding: 20px; }
+            .photos-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -435,69 +578,78 @@
         <div class="portfolio-grid">
             
             <!-- Case 1: AMR -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(1)">
                 <div class="portfolio-img-container" id="gallery-1">
-                    <img src="case1.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case1_2.png" onclick="openLightbox(this.src)">
+                    <img src="case1.png" class="active">
+                    <img src="case1_2.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(1, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(1, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>Antimicrobial Resistance Profiling</h3>
-                    <p>Processed bacterial genomes to detect AMR genes. Delivered comprehensive heatmaps mapping resistance mechanisms to drug classes.</p>
-                    <div class="tags">
-                        <span class="tag">Genomics</span>
-                        <span class="tag">CARD/ResFinder</span>
-                        <span class="tag">Microbiology</span>
+                    <div>
+                        <h3>Antimicrobial Resistance Profiling</h3>
+                        <p>Processed bacterial genomes to detect AMR genes. Delivered comprehensive heatmaps mapping resistance mechanisms to drug classes.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">Genomics</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 2: RAG -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(2)">
                 <div class="portfolio-img-container" id="gallery-2">
-                    <img src="case2.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case2.png" class="active">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Automated Systematic Reviews</h3>
-                    <p>Leveraged LLM/RAG architecture connected to the PubMed API to autonomously extract data and summarize cohorts for a clinical meta-analysis.</p>
-                    <div class="tags">
-                        <span class="tag">NLP / RAG</span>
-                        <span class="tag">Medical Writing</span>
-                        <span class="tag">NCBI API</span>
+                    <div>
+                        <h3>Automated Systematic Reviews</h3>
+                        <p>Leveraged LLM/RAG architecture connected to the PubMed API to autonomously extract data and summarize cohorts for a clinical meta-analysis.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">NLP / RAG</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 3: OmicsVis -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(3)">
                 <div class="portfolio-img-container" id="gallery-3">
-                    <img src="case3.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case3_1.png" onclick="openLightbox(this.src)">
+                    <img src="case3.png" class="active">
+                    <img src="case3_1.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(3, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(3, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>Gene Expression Profiling</h3>
-                    <p>Processed raw RNA-seq counts to identify DEGs. Delivered publication-ready interactive Volcano plots and clustered heatmaps.</p>
-                    <div class="tags">
-                        <span class="tag">RNA-Seq</span>
-                        <span class="tag">limma</span>
-                        <span class="tag">DataViz</span>
+                    <div>
+                        <h3>Gene Expression Profiling</h3>
+                        <p>Processed raw RNA-seq counts to identify DEGs. Delivered publication-ready interactive Volcano plots and clustered heatmaps.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">RNA-Seq</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 4: Single Cell -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(4)">
                 <div class="portfolio-img-container" id="gallery-4">
-                    <img src="case4.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case4._1.png" onclick="openLightbox(this.src)">
-                    <img src="case4._2.png" onclick="openLightbox(this.src)">
+                    <img src="case4.png" class="active">
+                    <img src="case4._1.png">
+                    <img src="case4._2.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(4, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(4, 1)"></span>
@@ -505,22 +657,25 @@
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>Single-Cell Subpopulation Discovery</h3>
-                    <p>Performed clustering on 10X Genomics scRNA-seq data to map immune cell trajectories and discover novel rare cell biomarkers.</p>
-                    <div class="tags">
-                        <span class="tag">scRNA-Seq</span>
-                        <span class="tag">Scanpy</span>
-                        <span class="tag">UMAP</span>
+                    <div>
+                        <h3>Single-Cell Subpopulation Discovery</h3>
+                        <p>Performed clustering on 10X Genomics scRNA-seq data to map immune cell trajectories and discover novel rare cell biomarkers.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">scRNA-Seq</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 5: Protein Modeler -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(5)">
                 <div class="portfolio-img-container" id="gallery-5">
-                    <img src="case5.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case5_1.png" onclick="openLightbox(this.src)">
-                    <img src="case5_2.png" onclick="openLightbox(this.src)">
+                    <img src="case5.png" class="active">
+                    <img src="case5_1.png">
+                    <img src="case5_2.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(5, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(5, 1)"></span>
@@ -528,101 +683,116 @@
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>3D Protein Binding Pocket Analysis</h3>
-                    <p>Visualized AlphaFold predicted structures to evaluate the impact of clinical missense mutations on drug binding affinity.</p>
-                    <div class="tags">
-                        <span class="tag">AlphaFold DB</span>
-                        <span class="tag">py3Dmol</span>
-                        <span class="tag">Cheminformatics</span>
+                    <div>
+                        <h3>3D Protein Binding Pocket Analysis</h3>
+                        <p>Visualized AlphaFold predicted structures to evaluate the impact of clinical missense mutations on drug binding affinity.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">AlphaFold DB</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 6: Variant Annotator -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(6)">
                 <div class="portfolio-img-container" id="gallery-6">
-                    <img src="case6.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case6_1.png" onclick="openLightbox(this.src)">
+                    <img src="case6.png" class="active">
+                    <img src="case6_1.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(6, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(6, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>Clinical VCF Variant Annotation</h3>
-                    <p>Filtered human Whole Exome Sequencing (WES) VCF files using Ensembl VEP to prioritize pathogenic variants for oncology targeted therapy.</p>
-                    <div class="tags">
-                        <span class="tag">VCF Parsing</span>
-                        <span class="tag">Clinical Genomics</span>
-                        <span class="tag">Oncology</span>
+                    <div>
+                        <h3>Clinical VCF Variant Annotation</h3>
+                        <p>Filtered human Whole Exome Sequencing (WES) VCF files using Ensembl VEP to prioritize pathogenic variants for oncology targeted therapy.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">Clinical</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 7: Genome Browser -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(7)">
                 <div class="portfolio-img-container" id="gallery-7">
-                    <img src="case7.png" class="active" onclick="openLightbox(this.src)">
+                    <img src="case7.png" class="active">
                 </div>
                 <div class="portfolio-info">
-                    <h3>Interactive Genomics Viewer (IGV)</h3>
-                    <p>Integrated IGV technology to visually verify BAM/VCF somatic mutations across hg38 human reference assemblies.</p>
-                    <div class="tags">
-                        <span class="tag">IGV.js</span>
-                        <span class="tag">BAM Alignment</span>
-                        <span class="tag">Visualization</span>
+                    <div>
+                        <h3>Interactive Genomics Viewer (IGV)</h3>
+                        <p>Integrated IGV technology to visually verify BAM/VCF somatic mutations across hg38 human reference assemblies.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">IGV.js</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 8: GEO Data Miner & GSEA -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(8)">
                 <div class="portfolio-img-container" id="gallery-8">
-                    <img src="case8.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case8_1.png" onclick="openLightbox(this.src)">
+                    <img src="case8.png" class="active">
+                    <img src="case8_1.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(8, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(8, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>NCBI GEO Mining & Pathway Enrichment</h3>
-                    <p>Automated microarray data retrieval and generated GSEA ridge plots mapping significantly enriched KEGG pathways in tumor samples.</p>
-                    <div class="tags">
-                        <span class="tag">NCBI GEO</span>
-                        <span class="tag">GSEA</span>
-                        <span class="tag">KEGG Pathways</span>
+                    <div>
+                        <h3>NCBI GEO Mining & Pathway Enrichment</h3>
+                        <p>Automated microarray data retrieval and generated GSEA ridge plots mapping significantly enriched KEGG pathways in tumor samples.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">GSEA</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 9: Pipeline Architect -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(9)">
                 <div class="portfolio-img-container" id="gallery-9">
-                    <img src="case9.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case9_1.png" onclick="openLightbox(this.src)">
+                    <img src="case9.png" class="active">
+                    <img src="case9_1.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(9, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(9, 1)"></span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>Cloud-Native Bioinformatics Pipelines</h3>
-                    <p>Designed a scalable Cromwell WDL pipeline for GATK Somatic Variant Calling, ready for deployment on AWS Batch / Google Cloud Life Sciences.</p>
-                    <div class="tags">
-                        <span class="tag">Nextflow / WDL</span>
-                        <span class="tag">GATK</span>
-                        <span class="tag">Cloud Computing</span>
+                    <div>
+                        <h3>Cloud-Native Bioinformatics Pipelines</h3>
+                        <p>Designed a scalable Cromwell WDL pipeline for GATK Somatic Variant Calling, ready for deployment on AWS Batch / Google Cloud Life Sciences.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">Pipelines</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 10: Microbiome -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openProjectModal(10)">
                 <div class="portfolio-img-container" id="gallery-10">
-                    <img src="case10.png" class="active" onclick="openLightbox(this.src)">
-                    <img src="case10_1.png" onclick="openLightbox(this.src)">
-                    <img src="case10_2.png" onclick="openLightbox(this.src)">
+                    <img src="case10.png" class="active">
+                    <img src="case10_1.png">
+                    <img src="case10_2.png">
                     <div class="gallery-nav">
                         <span class="gallery-dot active" onclick="event.stopPropagation(); switchSlide(10, 0)"></span>
                         <span class="gallery-dot" onclick="event.stopPropagation(); switchSlide(10, 1)"></span>
@@ -630,12 +800,15 @@
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <h3>Metagenomic Dysbiosis Profiling</h3>
-                    <p>Calculated Alpha/Beta diversity from 16S microbiome ASV tables, delivering interactive 3D PCoA projections and taxonomy bar charts.</p>
-                    <div class="tags">
-                        <span class="tag">16S rRNA</span>
-                        <span class="tag">Microbiome</span>
-                        <span class="tag">Diversity Stats</span>
+                    <div>
+                        <h3>Metagenomic Dysbiosis Profiling</h3>
+                        <p>Calculated Alpha/Beta diversity from 16S microbiome ASV tables, delivering interactive 3D PCoA projections and taxonomy bar charts.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags">
+                            <span class="tag">16S rRNA</span>
+                        </div>
+                        <span class="read-more-btn">Read Case Study <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
@@ -653,13 +826,191 @@
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
+    <!-- Project Folder Modal -->
+    <div id="project-modal" class="project-modal" onclick="closeProjectModal()">
+        <div class="modal-card" onclick="event.stopPropagation();">
+
+            <div class="modal-header">
+                <div>
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-header-sub" id="modal-subtitle"></div>
+                </div>
+                <button class="modal-close" onclick="closeProjectModal()">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Tags -->
+                <div class="modal-meta" id="modal-tags"></div>
+
+                <!-- Overview -->
+                <div class="modal-section-title">About This Project</div>
+                <p id="modal-overview"></p>
+
+                <!-- Input / Output / Tools -->
+                <div class="modal-data-box" id="modal-data-box"></div>
+
+                <!-- Value -->
+                <div class="modal-section-title">Delivered Value</div>
+                <p id="modal-value" style="color: #00f0ff; font-weight: 600;"></p>
+
+                <!-- Photos -->
+                <div class="photos-label"><i class="fa-solid fa-images"></i> &nbsp;Work Screenshots</div>
+                <div class="photos-grid" id="modal-photos"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
         <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation();">
     </div>
 
     <script>
+        const projectData = {
+            1: {
+                title: "Antimicrobial Resistance Profiling",
+                tags: ["Genomics", "CARD/ResFinder", "Microbiology"],
+                overview: "Identification of drug-resistant genes in bacterial genomes using high-throughput screening against CARD/ResFinder databases. Automated extraction of FASTA/FASTQ reads, assembly, and alignment mapping to identify exact resistance mechanisms (efflux pumps, target mutation, enzymatic inactivation).",
+                methodology: "CARD database integration, BLAST alignment matching, E-value scoring, heatmap generation mapping resistance mechanisms to drug classes.",
+                input: "Raw bacterial FASTA/FASTQ genomic sequences.",
+                output: "Annotated table of resistance genes, identity %, coverage, and high-contrast resistance heatmap.",
+                value: "Enables clinical microbiologists to instantly identify drug-resistant strains (MRSA etc.) and guide targeted treatment.",
+                images: ["case1.png", "case1_2.png"],
+                captions: [
+                    "AMR gene heatmap — resistance mechanisms mapped to drug classes across bacterial samples.",
+                    "Resistance gene table — identity scores, coverage, and drug class annotations per isolate."
+                ]
+            },
+            2: {
+                title: "Automated Systematic Reviews",
+                tags: ["NLP / RAG", "Medical Writing", "NCBI API"],
+                overview: "LLM-powered Retrieval-Augmented Generation (RAG) system integrated with NCBI PubMed API to automate scientific literature search, cohort data extraction, and systematic review writing.",
+                methodology: "Semantic retrieval, PubMed API mining, PDF table parsing, structured LLM prompts for zero-hallucination synthesis.",
+                input: "Search terms, target patient cohort parameters, study inclusion criteria.",
+                output: "Synthesized clinical meta-analysis, tabular cohort statistics, formatted citations.",
+                value: "Reduces clinical research timelines from months of manual reading to minutes.",
+                images: ["case2.png"],
+                captions: [
+                    "Precision Oncology Links panel — LLM-retrieved live drug approvals and clinical trials per gene variant."
+                ]
+            },
+            3: {
+                title: "Gene Expression Profiling",
+                tags: ["RNA-Seq", "DESeq2", "limma", "DataViz"],
+                overview: "Complete differential gene expression (DGE) pipeline transforming raw transcriptomic counts into publication-ready statistical insights and visualizations.",
+                methodology: "TMM normalization, limma/DESeq2 linear modeling, Benjamini-Hochberg FDR correction, interactive volcano and heatmap plotting.",
+                input: "Raw RNA-Seq counts matrix + experimental metadata.",
+                output: "DEGs reports, high-resolution Volcano plots, clustered heatmaps.",
+                value: "Enables key biomarker discovery and target identification for drug development and oncology research.",
+                images: ["case3.png", "case3_1.png"],
+                captions: [
+                    "Volcano plot — significantly up/downregulated genes highlighted by fold-change and p-value thresholds.",
+                    "Heatmap — top 50 DEGs clustered by expression pattern across sample conditions."
+                ]
+            },
+            4: {
+                title: "Single-Cell Subpopulation Discovery",
+                tags: ["scRNA-Seq", "Scanpy", "UMAP", "Clustering"],
+                overview: "High-resolution scRNA-seq processing to identify individual cell types, immune microenvironments, and developmental trajectories from 10X Genomics data.",
+                methodology: "QC filtering (mitochondrial thresholds), normalization, PCA, UMAP/t-SNE, Leiden clustering, marker-gene based cell type annotation.",
+                input: "10X Genomics Cell Ranger output (filtered_feature_bc_matrix).",
+                output: "UMAP plots with annotated cell subpopulations, cluster frequency tables, differential marker gene lists.",
+                value: "Maps tumor microenvironment, identifies cancer stem cells, and analyzes drug-resistant cell fractions.",
+                images: ["case4.png", "case4._1.png", "case4._2.png"],
+                captions: [
+                    "UMAP projection — distinct immune cell clusters colored by Leiden cluster assignment.",
+                    "Cell type annotation — top marker genes per cluster used for biological labeling.",
+                    "Cluster frequency table — relative abundance of each cell population per sample group."
+                ]
+            },
+            5: {
+                title: "3D Protein Binding Pocket Analysis",
+                tags: ["AlphaFold DB", "py3Dmol", "Structural Biology"],
+                overview: "Structural biology analysis evaluating the impact of clinical missense mutations on protein structure and drug-binding pocket geometry using AlphaFold2 models.",
+                methodology: "AlphaFold model retrieval, pocket volume/surface calculation, mutation modeling, interactive WebGL molecular rendering via py3Dmol.",
+                input: "UniProt ID or PDB code + clinical mutation variants list.",
+                output: "Interactive 3D molecular model highlighting mutation hotspots, binding pockets, and affinity comparison report.",
+                value: "Helps computational chemists understand why mutations cause drug resistance and design better binders.",
+                images: ["case5.png", "case5_1.png", "case5_2.png"],
+                captions: [
+                    "3D protein structure — AlphaFold model with binding pocket highlighted and mutation site marked.",
+                    "Pocket residues view — key amino acids involved in ligand coordination visualized in stick mode.",
+                    "Mutation comparison — wild-type vs. mutant binding pocket overlay showing structural shift."
+                ]
+            },
+            6: {
+                title: "Clinical VCF Variant Annotation",
+                tags: ["VCF Parsing", "Ensembl VEP", "Oncology", "Precision Medicine"],
+                overview: "Annotation of Whole Exome Sequencing (WES) variant files to identify pathogenic mutations and actionable pharmacogenomics targets for precision oncology.",
+                methodology: "Ensembl VEP API queries, ClinVar pathogenic classification, gnomAD allele frequency filtering, drug-target interaction mapping via Open Targets.",
+                input: "Raw patient VCF files from WGS/WES sequencing.",
+                output: "Filtered clinical report: pathogenic variants, phenotype links, FDA-approved drugs, active clinical trials.",
+                value: "Enables clinicians to select targeted therapies based on each patient's individual genomic mutations.",
+                images: ["case6.png", "case6_1.png"],
+                captions: [
+                    "Variant annotation report — BRAF/BRCA1/NRAS pathogenic variants with linked drug approvals from Open Targets.",
+                    "Clinical trials panel — automatically retrieved active ClinicalTrials.gov studies per detected variant."
+                ]
+            },
+            7: {
+                title: "Interactive Genomics Viewer (IGV)",
+                tags: ["IGV.js", "BAM Alignment", "Visualization"],
+                overview: "Web-based integration of IGV.js for visual validation of alignment BAM files and variant calls directly in the browser — no software installation needed.",
+                methodology: "IGV.js integration, custom track creation, BAM/BAI indexing, visual genomic coordinates rendering (hg19/hg38).",
+                input: "BAM alignment files, VCF variant files, reference genome coordinates.",
+                output: "Interactive genomic track browser: read coverage, split reads, mismatches, SNP visualization.",
+                value: "Allows pathologists to visually confirm bioinformatics variant calls, eliminating false positives before clinical decisions.",
+                images: ["case7.png"],
+                captions: [
+                    "IGV browser view — BAM read pileup at a somatic mutation site with variant allele frequency display."
+                ]
+            },
+            8: {
+                title: "NCBI GEO Mining & GSEA",
+                tags: ["NCBI GEO", "GSEA", "KEGG Pathways", "R"],
+                overview: "Automated retrieval and re-analysis of public GEO gene expression datasets, followed by GSEA to map enriched biological pathways in disease vs. control comparisons.",
+                methodology: "GEOquery downloading, limma differential analysis, fgsea pathway enrichment, Ridge plot and Volcano plot generation via enrichplot.",
+                input: "NCBI GEO accession number (e.g. GSE25507) — fully automated download.",
+                output: "GSEA Ridge plot, enriched pathway table, annotated Volcano plot, Bioconductor R scripts.",
+                value: "Validate lab hypotheses against thousands of public datasets in minutes — no coding required from the client.",
+                images: ["case8.png", "case8_1.png"],
+                captions: [
+                    "GSEA Ridge plot — top enriched KEGG pathways ranked by Normalized Enrichment Score (NES).",
+                    "Volcano plot — GEO dataset DEGs with GSEA pathway membership color overlay."
+                ]
+            },
+            9: {
+                title: "Cloud-Native Bioinformatics Pipelines",
+                tags: ["Nextflow", "WDL / Cromwell", "GATK", "Cloud"],
+                overview: "Design and generation of scalable HPC bioinformatics workflows for large-scale genomic data analysis on AWS and Google Cloud Life Sciences.",
+                methodology: "Nextflow / WDL script generation, Docker/Singularity containerization, GATK Best Practices, AWS Batch and GCP config files.",
+                input: "Target pipeline steps (QC → alignment → variant calling → reporting).",
+                output: "Executable main.nf / workflow.wdl scripts, Docker images, cloud config files, deployment guide.",
+                value: "Scales analysis from a laptop to thousands of cloud nodes — standardizes biotech production workflows.",
+                images: ["case9.png", "case9_1.png"],
+                captions: [
+                    "Pipeline architecture diagram — Nextflow workflow DAG for GATK somatic variant calling.",
+                    "Cloud deployment config — AWS Batch executor settings and resource allocation per pipeline step."
+                ]
+            },
+            10: {
+                title: "Metagenomic Dysbiosis Profiling",
+                tags: ["16S rRNA", "Microbiome", "QIIME2", "Diversity Stats"],
+                overview: "Analysis of 16S rRNA sequencing to profile microbial communities, calculate diversity statistics, and detect disease-associated dysbiosis signatures.",
+                methodology: "ASV table parsing, Alpha diversity (Shannon/Simpson), Beta diversity (Bray-Curtis/UniFrac), 3D PCoA projection, taxonomic grouping and stacked bar charts.",
+                input: "Microbial abundance matrix (ASV/OTU table) + sample grouping metadata.",
+                output: "Alpha/Beta diversity charts, 3D PCoA plots, taxonomic abundance bar charts.",
+                value: "Essential for microbiome therapeutic development, dietary clinical trials, and personalized probiotic formulations.",
+                images: ["case10.png", "case10_1.png", "case10_2.png"],
+                captions: [
+                    "Alpha diversity — Shannon index distribution comparing healthy vs. dysbiosis patient groups.",
+                    "Beta diversity PCoA — Bray-Curtis distance 3D projection showing community separation between groups.",
+                    "Taxonomy stacked bar chart — relative genus-level abundance across all samples."
+                ]
+            }
+        };
+
         function switchSlide(cardId, slideIndex) {
             const container = document.getElementById('gallery-' + cardId);
             const images = container.querySelectorAll('img');
@@ -676,6 +1027,51 @@
             dots[slideIndex].classList.add('active');
         }
 
+        function openProjectModal(id) {
+            const data = projectData[id];
+            if (!data) return;
+
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-subtitle').innerText = data.tags.join(' · ');
+            document.getElementById('modal-overview').innerText = data.overview;
+            document.getElementById('modal-value').innerText = data.value;
+
+            // Tags
+            document.getElementById('modal-tags').innerHTML =
+                data.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+            // Input / Output / Methodology box
+            document.getElementById('modal-data-box').innerHTML = `
+                <div class="row"><i class="fa-solid fa-database"></i><span><strong>Input: </strong>${data.input}</span></div>
+                <div class="row"><i class="fa-solid fa-chart-bar"></i><span><strong>Output: </strong>${data.output}</span></div>
+                <div class="row"><i class="fa-solid fa-gear"></i><span><strong>Methods: </strong>${data.methodology}</span></div>`;
+
+            // Photos grid — all images visible at once with captions
+            const photosContainer = document.getElementById('modal-photos');
+            photosContainer.innerHTML = '';
+            data.images.forEach((imgSrc, i) => {
+                const caption = data.captions ? data.captions[i] : '';
+                const item = document.createElement('div');
+                item.className = 'photo-item';
+                item.onclick = () => openLightbox(imgSrc);
+                item.innerHTML = `
+                    <img src="${imgSrc}" alt="Screenshot ${i+1}" loading="lazy">
+                    <div class="photo-caption">
+                        <span class="photo-num">${i+1}</span>${caption}
+                    </div>`;
+                photosContainer.appendChild(item);
+            });
+
+            document.getElementById('project-modal').style.display = 'flex';
+            document.getElementById('project-modal').scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -686,13 +1082,17 @@
 
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto'; // enable scroll
+            // Only restore body overflow if the project details modal is NOT open
+            if (document.getElementById('project-modal').style.display !== 'flex') {
+                document.body.style.overflow = 'auto'; // enable scroll
+            }
         }
 
         // Close on Esc key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeLightbox();
+                closeProjectModal();
             }
         });
     </script>
