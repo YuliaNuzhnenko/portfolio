@@ -27,37 +27,165 @@
     <meta name="twitter:description" content="Multi-omics integration, scRNA-Seq, AlphaFold structural biology, and Nextflow HPC pipeline architecture." />
     <meta name="twitter:image" content="https://raw.githubusercontent.com/YuliaNuzhnenko/YuliaNuzhnenko/main/banner.svg" />
 
-    <!-- Schema.org JSON-LD Structured Data for AI & Search Engines -->
+    <!-- Schema.org JSON-LD Structured Data Graph for AI & Search Engines -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Yulia Nuzhnenko",
-      "alternateName": "Yulia Nuzhnenko Bioinformatician",
-      "jobTitle": "Senior Computational Biologist & Bioinformatics Architect",
-      "url": "https://yulianuzhnenko.github.io/portfolio/",
-      "image": "https://raw.githubusercontent.com/YuliaNuzhnenko/YuliaNuzhnenko/main/banner.svg",
-      "sameAs": [
-        "https://github.com/YuliaNuzhnenko",
-        "https://orcid.org/0009-0004-2049-3364",
-        "https://www.kolabtree.com/find-an-expert/j.146818/"
-      ],
-      "knowsAbout": [
-        "Bioinformatics",
-        "Computational Biology",
-        "Multi-Omics Integration",
-        "Transcriptomics & Bulk RNA-Seq",
-        "Single-Cell RNA-Seq (scRNA-Seq)",
-        "3D Structural Biology & AlphaFold DB",
-        "Clinical VCF Variant Annotation & Ensembl VEP",
-        "Metagenomics & 16S Microbiome",
-        "Nextflow & WDL Cloud-Native HPC Pipelines",
-        "Biomedical AI & Retrieval-Augmented Generation (RAG)"
-      ],
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Bioinformatics & Computational Biology Institute"
-      }
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://yulianuzhnenko.github.io/portfolio/#person",
+          "name": "Yulia Nuzhnenko",
+          "alternateName": "Yulia Nuzhnenko Bioinformatician",
+          "jobTitle": "Senior Computational Biologist & Bioinformatics Architect",
+          "description": "Senior Computational Biologist & Bioinformatics Architect specializing in Multi-Omics, scRNA-Seq, AlphaFold 3D Structural Biology, Nextflow Cloud HPC, and Biomedical AI (RAG).",
+          "url": "https://yulianuzhnenko.github.io/portfolio/",
+          "image": "https://raw.githubusercontent.com/YuliaNuzhnenko/YuliaNuzhnenko/main/banner.svg",
+          "sameAs": [
+            "https://github.com/YuliaNuzhnenko",
+            "https://orcid.org/0009-0004-2049-3364",
+            "https://www.kolabtree.com/find-an-expert/j.146818/"
+          ],
+          "knowsAbout": [
+            "Bioinformatics",
+            "Computational Biology",
+            "Multi-Omics Integration",
+            "Transcriptomics & Bulk RNA-Seq",
+            "Single-Cell RNA-Seq (scRNA-Seq)",
+            "3D Structural Biology & AlphaFold DB",
+            "Clinical VCF Variant Annotation & Ensembl VEP",
+            "Metagenomics & 16S Microbiome",
+            "Nextflow & WDL Cloud-Native HPC Pipelines",
+            "Biomedical AI & Retrieval-Augmented Generation (RAG)"
+          ]
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://yulianuzhnenko.github.io/portfolio/#webpage",
+          "url": "https://yulianuzhnenko.github.io/portfolio/",
+          "name": "Yulia Nuzhnenko | Senior Computational Biologist & Bioinformatics Architect",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Yulia Nuzhnenko Portfolio",
+            "url": "https://yulianuzhnenko.github.io/portfolio/"
+          },
+          "about": { "@id": "https://yulianuzhnenko.github.io/portfolio/#person" }
+        },
+        {
+          "@type": "ItemList",
+          "name": "Scientific Platforms & Software Repositories",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Clinical VCF Variant Annotator",
+              "url": "https://github.com/YuliaNuzhnenko/Clinical-Variant-Annotator"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Automated Systematic Reviews (PubMed RAG)",
+              "url": "https://github.com/YuliaNuzhnenko/PubMed-RAG-Assistant"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Gene Expression Profiling (OmicsVis)",
+              "url": "https://github.com/YuliaNuzhnenko/OmicsVis-Interactive_DEG_Biomarker_Discovery_Tool"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Single-Cell Subpopulation Discovery",
+              "url": "https://github.com/YuliaNuzhnenko/Single_Cell_AI_Explorer"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "3D Protein Binding Pocket Analysis",
+              "url": "https://github.com/YuliaNuzhnenko/Protein_3D_Modeler"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "Interactive Genomics Viewer (IGV)",
+              "url": "https://github.com/YuliaNuzhnenko/Interactive-Genomics-Viewer-IGV"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "name": "NCBI GEO Mining & GSEA",
+              "url": "https://github.com/YuliaNuzhnenko/NCBI-GEO-Mining-GSEA"
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "name": "Cloud-Native Bioinformatics Pipelines",
+              "url": "https://github.com/YuliaNuzhnenko/Cloud-Native-Genomics-Pipelines"
+            },
+            {
+              "@type": "ListItem",
+              "position": 9,
+              "name": "Metagenomic Dysbiosis Profiling",
+              "url": "https://github.com/YuliaNuzhnenko/Metagenomic-Dysbiosis-Profiler"
+            },
+            {
+              "@type": "ListItem",
+              "position": 10,
+              "name": "Antimicrobial Resistance Profiling",
+              "url": "https://github.com/YuliaNuzhnenko/amr-genome-analyzer"
+            },
+            {
+              "@type": "ListItem",
+              "position": 11,
+              "name": "Multi-Omics Computational Pipelines",
+              "url": "https://github.com/YuliaNuzhnenko/awesome-multi-omics-pipelines"
+            },
+            {
+              "@type": "ListItem",
+              "position": 12,
+              "name": "Biomedical LLM RAG Resources",
+              "url": "https://github.com/YuliaNuzhnenko/biomedical-llm-rag-resources"
+            },
+            {
+              "@type": "ListItem",
+              "position": 13,
+              "name": "Nextflow DSL2 Production Template",
+              "url": "https://github.com/YuliaNuzhnenko/nextflow-dsl2-production-template"
+            },
+            {
+              "@type": "ListItem",
+              "position": 14,
+              "name": "Streamlit Bioinformatics UI Kit",
+              "url": "https://github.com/YuliaNuzhnenko/streamlit-bioinformatics-ui-kit"
+            },
+            {
+              "@type": "ListItem",
+              "position": 15,
+              "name": "Bioinformatics One-Liners Cheatsheet",
+              "url": "https://github.com/YuliaNuzhnenko/bioinformatics-one-liners"
+            },
+            {
+              "@type": "ListItem",
+              "position": 16,
+              "name": "Biotech & Biomedical AI System Prompts",
+              "url": "https://github.com/YuliaNuzhnenko/biotech-ai-prompts"
+            },
+            {
+              "@type": "ListItem",
+              "position": 17,
+              "name": "Multi-Omics Production Docker Containers",
+              "url": "https://github.com/YuliaNuzhnenko/bio-docker-containers"
+            },
+            {
+              "@type": "ListItem",
+              "position": 18,
+              "name": "Bioinformatics Tools Performance Benchmarks",
+              "url": "https://github.com/YuliaNuzhnenko/bio-tools-benchmark"
+            }
+          ]
+        }
+      ]
     }
     </script>
 
