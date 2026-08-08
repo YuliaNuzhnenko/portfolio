@@ -786,8 +786,8 @@
         <div class="portfolio-grid">
             
             <!-- 2026 Initiative 1: Spatial -->
-            <div class="portfolio-card" data-category="single-cell">
-                <div class="portfolio-img-container">
+            <div class="portfolio-card" data-category="single-cell" onclick="openProjectModal(11)">
+                <div class="portfolio-img-container" id="gallery-11">
                     <img src="case4.png" class="active">
                 </div>
                 <div class="portfolio-info">
@@ -801,14 +801,14 @@
                             <span class="tag">Spatial Omics</span>
                             <span class="tag">Squidpy</span>
                         </div>
-                        <a href="https://github.com/YuliaNuzhnenko/spatial-transcriptomics-atlas" target="_blank" class="read-more-btn">GitHub Repo <i class="fa-solid fa-arrow-right"></i></a>
+                        <span class="read-more-btn">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- 2026 Initiative 2: AlphaFold3 -->
-            <div class="portfolio-card" data-category="structural">
-                <div class="portfolio-img-container">
+            <div class="portfolio-card" data-category="structural" onclick="openProjectModal(12)">
+                <div class="portfolio-img-container" id="gallery-12">
                     <img src="case5.png" class="active">
                 </div>
                 <div class="portfolio-info">
@@ -822,14 +822,14 @@
                             <span class="tag">AlphaFold3</span>
                             <span class="tag">DiffDock</span>
                         </div>
-                        <a href="https://github.com/YuliaNuzhnenko/alphafold3-complex-docking" target="_blank" class="read-more-btn">GitHub Repo <i class="fa-solid fa-arrow-right"></i></a>
+                        <span class="read-more-btn">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- 2026 Initiative 3: RNA Velocity -->
-            <div class="portfolio-card" data-category="single-cell">
-                <div class="portfolio-img-container">
+            <div class="portfolio-card" data-category="single-cell" onclick="openProjectModal(13)">
+                <div class="portfolio-img-container" id="gallery-13">
                     <img src="case4._1.png" class="active">
                 </div>
                 <div class="portfolio-info">
@@ -843,7 +843,7 @@
                             <span class="tag">scVelo</span>
                             <span class="tag">CellRank</span>
                         </div>
-                        <a href="https://github.com/YuliaNuzhnenko/sc-rna-velocity-trajectory" target="_blank" class="read-more-btn">GitHub Repo <i class="fa-solid fa-arrow-right"></i></a>
+                        <span class="read-more-btn">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
@@ -1395,6 +1395,106 @@
         });
     }
     </script>
+
+
+    <!-- Modal 11: Spatial Transcriptomics -->
+    <div class="project-modal" id="modal-11">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2>Spatial Transcriptomics Microenvironment Atlas</h2>
+                    <div class="modal-header-sub">10x Visium & Xenium In Situ Spatial Neighborhood Mapping</div>
+                </div>
+                <button class="modal-close" onclick="closeProjectModal(11)">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="tag">Spatial Transcriptomics</span>
+                    <span class="tag">Squidpy</span>
+                    <span class="tag">Seurat v5</span>
+                    <span class="tag">10x Visium</span>
+                </div>
+                <div class="modal-section-title">Scientific Overview</div>
+                <p>Preserves spatial cellular architecture in tissue sections without dissociation. Computes Delaunay spatial contact graphs, Moran's I spatial autocorrelation for spatially variable genes (SVGs), and maps cell-cell ligand-receptor communication networks within tumor microenvironments.</p>
+
+                <div class="modal-data-box">
+                    <div class="row"><i class="fa-solid fa-code-commit"></i> <span><strong>Repository:</strong> github.com/YuliaNuzhnenko/spatial-transcriptomics-atlas</span></div>
+                    <div class="row"><i class="fa-solid fa-vial"></i> <span><strong>Platforms Supported:</strong> 10x Visium, Xenium In Situ, MERFISH, Stereo-seq</span></div>
+                    <div class="row"><i class="fa-solid fa-chart-line"></i> <span><strong>Core Statistics:</strong> Moran's I Spatial Autocorrelation, Cell-Cell Proximity Networks</span></div>
+                </div>
+
+                <a href="https://github.com/YuliaNuzhnenko/spatial-transcriptomics-atlas" target="_blank" class="flagship-btn" style="margin-top:10px;">
+                    <i class="fa-brands fa-github"></i> Open GitHub Repository
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 12: AlphaFold3 -->
+    <div class="project-modal" id="modal-12">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2>AlphaFold3 Biomolecular Complex & Interaction Evaluator</h2>
+                    <div class="modal-header-sub">Multi-Chain Complex Interface & PAE Matrix Scoring</div>
+                </div>
+                <button class="modal-close" onclick="closeProjectModal(12)">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="tag">AlphaFold3</span>
+                    <span class="tag">DiffDock</span>
+                    <span class="tag">PAE Analysis</span>
+                    <span class="tag">Biopython</span>
+                </div>
+                <div class="modal-section-title">Scientific Overview</div>
+                <p>Extends 3D protein structure prediction to multi-chain complex systems (Protein-DNA, Protein-RNA, Protein-Ligand). Parses 2D Predicted Aligned Error (PAE) matrices to decouple inter-chain domain confidence from intra-chain errors and computes solvent-accessible surface area (SASA) burial.</p>
+
+                <div class="modal-data-box">
+                    <div class="row"><i class="fa-solid fa-code-commit"></i> <span><strong>Repository:</strong> github.com/YuliaNuzhnenko/alphafold3-complex-docking</span></div>
+                    <div class="row"><i class="fa-solid fa-dna"></i> <span><strong>Complex Types:</strong> Protein-Protein, Protein-DNA, Protein-RNA, Protein-Small Molecule</span></div>
+                    <div class="row"><i class="fa-solid fa-cubes"></i> <span><strong>Metrics:</strong> Inter-Chain PAE (Å), Delta SASA (Å²), Active Site Mutation Hotspots</span></div>
+                </div>
+
+                <a href="https://github.com/YuliaNuzhnenko/alphafold3-complex-docking" target="_blank" class="flagship-btn" style="margin-top:10px;">
+                    <i class="fa-brands fa-github"></i> Open GitHub Repository
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 13: RNA Velocity -->
+    <div class="project-modal" id="modal-13">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2>Single-Cell RNA Velocity & Trajectory Inference Engine</h2>
+                    <div class="modal-header-sub">scVelo Splicing Kinetics & CellRank Fate Drivers</div>
+                </div>
+                <button class="modal-close" onclick="closeProjectModal(13)">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="tag">RNA Velocity</span>
+                    <span class="tag">scVelo</span>
+                    <span class="tag">CellRank</span>
+                    <span class="tag">AnnData</span>
+                </div>
+                <div class="modal-section-title">Scientific Overview</div>
+                <p>Calculates time-resolved single-cell transcriptomic velocity vectors from ratios of unspliced pre-mRNA to spliced mature mRNA. Fits kinetic differential equations and applies CellRank absorbing Markov chains to predict cell fate decisions in stem cell differentiation and tumor evolution.</p>
+
+                <div class="modal-data-box">
+                    <div class="row"><i class="fa-solid fa-code-commit"></i> <span><strong>Repository:</strong> github.com/YuliaNuzhnenko/sc-rna-velocity-trajectory</span></div>
+                    <div class="row"><i class="fa-solid fa-sliders"></i> <span><strong>Kinetics Model:</strong> Splicing Differential Equations (du/dt = α - βu, ds/dt = βu - γs)</span></div>
+                    <div class="row"><i class="fa-solid fa-route"></i> <span><strong>Outputs:</strong> Velocity Stream UMAP, Absorbing Fate Probabilities, Velocity Pseudotime</span></div>
+                </div>
+
+                <a href="https://github.com/YuliaNuzhnenko/sc-rna-velocity-trajectory" target="_blank" class="flagship-btn" style="margin-top:10px;">
+                    <i class="fa-brands fa-github"></i> Open GitHub Repository
+                </a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
