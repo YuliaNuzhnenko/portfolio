@@ -1,0 +1,26 @@
+# Robots.txt for Yulia Nuzhnenko Bioinformatics Portfolio
+# Allows all search engine crawlers and AI answer engine bots
+
+User-agent: *
+Allow: /
+
+# Explicit AI Crawlers Permitted for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://yulianuzhnenko.github.io/portfolio/sitemap.xml
