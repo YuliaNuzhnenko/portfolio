@@ -823,6 +823,48 @@
                 </div>
             </div>
 
+            <!-- New Case: Data Visualization -->
+            <div class="portfolio-card" data-category="data-viz" onclick="openProjectModal(15)">
+                <div class="portfolio-img-container" id="gallery-15">
+                    <img src="case15_1.png" class="active">
+                    <img src="case15_2.png">
+                    <img src="case15_3.png">
+                    <img src="case15_4.png">
+                    <img src="case15_5.png">
+                    <img src="case15_6.png">
+                    <img src="case15_7.png">
+                    <img src="case15_8.png">
+                    <img src="case15_9.png">
+                    <img src="case15_10.png">
+                    <div class="gallery-nav">
+                        <div class="gallery-dot active" onclick="event.stopPropagation(); setGalleryImage(15, 0)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 1)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 2)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 3)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 4)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 5)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 6)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 7)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 8)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(15, 9)"></div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="tags">
+                        <span class="tag">Data Viz</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                    </div>
+                    <div>
+                        <h3>Publication-Ready Bioinformatics Data Visualization</h3>
+                        <p>A comprehensive suite of publication-ready visualizations created for complex biological and clinical datasets.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="javascript:void(0)" class="read-more-btn">View Gallery <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
             <!-- 2026 Initiative 1: Spatial -->
             <div style="display: none;">
             <div class="portfolio-card" data-category="single-cell" onclick="openProjectModal(11)">
@@ -1602,6 +1644,77 @@
                     <div class="photo-item" onclick="openLightbox('case12_5.png')">
                         <img src="case12_5.png" alt="Marker Gene Excel Report - Heatmap Validated">
                         <div class="photo-caption"><span class="photo-num">Fig 5</span> Highlighting significant LogFC changes for rare sub-populations.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 15: Data Visualization -->
+    <div class="project-modal" id="modal-15" onclick="closeProjectModal(15, event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2>Publication-Ready Bioinformatics Data Visualization</h2>
+                    <div class="modal-header-sub">High-Resolution Figures for High-Impact Journals</div>
+                </div>
+                <div class="modal-close" onclick="closeProjectModal(15)"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="tag"><i class="fa-solid fa-code"></i> R & Python</span>
+                    <span class="tag"><i class="fa-solid fa-chart-pie"></i> Matplotlib & Seaborn</span>
+                    <span class="tag"><i class="fa-solid fa-book-open"></i> Scientific Formatting</span>
+                </div>
+
+                <div class="modal-data-box">
+                    <div class="row"><i class="fa-solid fa-bullseye"></i><span><strong>Objective:</strong> Transform raw statistical data into intuitive, high-resolution figures tailored for high-impact scientific journals.</span></div>
+                    <div class="row"><i class="fa-solid fa-chart-line"></i><span><strong>Visualizations:</strong> Multi-Panel Figures (A-H), PCA projections, Volcano & Lollipop plots, Genomic Circos plots, Correlation heatmaps, Kaplan-Meier curves, and error-bar metabolite barplots.</span></div>
+                    <div class="row"><i class="fa-solid fa-check"></i><span><strong>Results:</strong> Delivered meticulously customized figures featuring 300+ DPI, colorblind-friendly palettes, and exact layout configurations meeting strict academic publishing standards.</span></div>
+                </div>
+
+                <div class="photos-label"><i class="fa-solid fa-images"></i> Visualization Portfolio (10 Figures)</div>
+                <div class="photos-grid">
+                    <div class="photo-item" onclick="openLightbox('case15_1.png')">
+                        <img src="case15_1.png" alt="Multi-Panel Figure A-H">
+                        <div class="photo-caption"><span class="photo-num">Fig 1</span> Multi-Panel Figure: PCA, Volcano, Survival Analysis.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_2.png')">
+                        <img src="case15_2.png" alt="Genomic Distribution Circos Plot">
+                        <div class="photo-caption"><span class="photo-num">Fig 2</span> Genomic distribution of somatic mutations (Circos-style).</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_3.png')">
+                        <img src="case15_3.png" alt="Multi-Panel Figure A-D">
+                        <div class="photo-caption"><span class="photo-num">Fig 3</span> Multi-Panel: UMAP, Violin Plot, Heatmap, Barplot.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_4.png')">
+                        <img src="case15_4.png" alt="Correlation Matrix Heatmap">
+                        <div class="photo-caption"><span class="photo-num">Fig 4</span> Clinical vs Genomic Correlation Matrix Heatmap.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_5.png')">
+                        <img src="case15_5.png" alt="Data Visualization 5">
+                        <div class="photo-caption"><span class="photo-num">Fig 5</span> Dimensionality reduction and variance projection.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_6.png')">
+                        <img src="case15_6.png" alt="Data Visualization 6">
+                        <div class="photo-caption"><span class="photo-num">Fig 6</span> High-resolution differential expression plots.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_7.png')">
+                        <img src="case15_7.png" alt="Data Visualization 7">
+                        <div class="photo-caption"><span class="photo-num">Fig 7</span> Pre/Post-Treatment Biomarker tracking.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_8.png')">
+                        <img src="case15_8.png" alt="Data Visualization 8">
+                        <div class="photo-caption"><span class="photo-num">Fig 8</span> Kaplan-Meier survival curves & clinical metrics.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_9.png')">
+                        <img src="case15_9.png" alt="Data Visualization 9">
+                        <div class="photo-caption"><span class="photo-num">Fig 9</span> Statistical correlation scatter plots with linear regression.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('case15_10.png')">
+                        <img src="case15_10.png" alt="Data Visualization 10">
+                        <div class="photo-caption"><span class="photo-num">Fig 10</span> Density distributions and metabolic error-bar plots.</div>
                     </div>
                 </div>
             </div>
