@@ -1345,6 +1345,15 @@
         }
 
         function openProjectModal(id) {
+            // Support for hardcoded custom modals (like case 11 and 12)
+            const hardcodedModal = document.getElementById('modal-' + id);
+            if (hardcodedModal) {
+                hardcodedModal.style.display = 'flex';
+                hardcodedModal.scrollTop = 0;
+                document.body.style.overflow = 'hidden';
+                return;
+            }
+
             const data = projectData[id];
             if (!data) return;
 
@@ -1384,7 +1393,18 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeProjectModal() {
+        function closeProjectModal(id, event) {
+            if (event && event.target && event.target.closest && event.target.closest('.modal-card') && !event.target.closest('.modal-close')) {
+                return;
+            }
+            if (id) {
+                const hardcodedModal = document.getElementById('modal-' + id);
+                if (hardcodedModal) {
+                    hardcodedModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    return;
+                }
+            }
             document.getElementById('project-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
