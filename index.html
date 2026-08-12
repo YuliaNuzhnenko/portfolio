@@ -792,6 +792,37 @@
 
         <div class="portfolio-grid">
             
+            <!-- New Case: Single-Cell & Transcriptomics -->
+            <div class="portfolio-card" data-category="single-cell" onclick="openProjectModal(12)">
+                <div class="portfolio-img-container" id="gallery-12">
+                    <img src="case12_1.png" class="active">
+                    <img src="case12_2.png">
+                    <img src="case12_3.png">
+                    <img src="case12_4.png">
+                    <img src="case12_5.png">
+                    <div class="gallery-nav">
+                        <div class="gallery-dot active" onclick="event.stopPropagation(); setGalleryImage(12, 0)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(12, 1)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(12, 2)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(12, 3)"></div>
+                        <div class="gallery-dot" onclick="event.stopPropagation(); setGalleryImage(12, 4)"></div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="tags">
+                        <span class="tag">Single-Cell</span>
+                        <span class="tag">Scanpy</span>
+                        <span class="tag">UMAP</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <h3 style="margin-top:15px;">Single-Cell RNA-Seq Analysis: Clustering & Biomarker Discovery</h3>
+                    <p>Advanced scRNA-seq pipeline on PBMC uncovering cellular heterogeneity and annotating distinct cell populations.</p>
+                    <div class="card-footer">
+                        <a href="javascript:void(0)" class="read-more-btn">View Analysis <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
             <!-- 2026 Initiative 1: Spatial -->
             <div class="portfolio-card" data-category="single-cell" onclick="openProjectModal(11)">
                 <div class="portfolio-img-container" id="gallery-11">
@@ -1500,6 +1531,57 @@
                 <a href="https://github.com/YuliaNuzhnenko/sc-rna-velocity-trajectory" target="_blank" class="flagship-btn" style="margin-top:10px;">
                     <i class="fa-brands fa-github"></i> Open GitHub Repository
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 12: Transcriptomics -->
+    <div class="project-modal" id="modal-12" onclick="closeProjectModal(12, event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2>Single-Cell RNA-Seq Analysis: Clustering & Biomarker Discovery</h2>
+                    <div class="modal-header-sub">PBMC Dataset Analysis via Scanpy</div>
+                </div>
+                <div class="modal-close" onclick="closeProjectModal(12)"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="tag"><i class="fa-solid fa-code"></i> Python</span>
+                    <span class="tag"><i class="fa-solid fa-microscope"></i> Scanpy & 10X Genomics</span>
+                    <span class="tag"><i class="fa-solid fa-dna"></i> scRNA-Seq</span>
+                </div>
+
+                <div class="modal-data-box">
+                    <div class="row"><i class="fa-solid fa-bullseye"></i><span><strong>Objective:</strong> Showcase an advanced scRNA-seq analysis pipeline on a Peripheral Blood Mononuclear Cells (PBMC) dataset to uncover hidden cellular heterogeneity and annotate distinct cell populations.</span></div>
+                    <div class="row"><i class="fa-solid fa-chart-line"></i><span><strong>Methodology:</strong> Performed rigorous QC, log-normalization, HVG selection, and data scaling. Reduced dimensionality using PCA and UMAP. Applied unsupervised Leiden clustering (res=0.5) to identify T-cells, B-cells, and Monocytes. Calculated cluster-specific marker genes using Wilcoxon rank-sum tests to extract exact LogFC and P-values.</span></div>
+                    <div class="row"><i class="fa-solid fa-check"></i><span><strong>Results:</strong> Delivered a premium formatted Excel report featuring multi-color scales for intuitive data interpretation. Perfectly identified rare cell types, providing a robust, publication-ready understanding of the single-cell populations.</span></div>
+                </div>
+
+                <div class="photos-label"><i class="fa-solid fa-images"></i> Analysis Outputs</div>
+                <div class="photos-grid">
+                    <div class="photo-item" onclick="openLightbox(this)">
+                        <img src="case12_1.png" alt="PCA and Volcano Plot">
+                        <div class="photo-caption"><span class="photo-num">Fig 1</span> Sample Clustering PCA & Gene Expression Change Volcano Plot.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox(this)">
+                        <img src="case12_2.png" alt="UMAP and Heatmap">
+                        <div class="photo-caption"><span class="photo-num">Fig 2</span> Single-Cell UMAP Clustering and Top Marker Genes Expression Heatmap.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox(this)">
+                        <img src="case12_3.png" alt="Marker Gene Excel Report - Clusters 0 & 1">
+                        <div class="photo-caption"><span class="photo-num">Fig 3</span> Excel report showing Wilcoxon rank-sum test results for Clusters 0 and 1.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox(this)">
+                        <img src="case12_4.png" alt="Marker Gene Excel Report - Clusters 2 & 3">
+                        <div class="photo-caption"><span class="photo-num">Fig 4</span> Differentially expressed markers (LogFC/P-values) for Clusters 2 and 3.</div>
+                    </div>
+                    <div class="photo-item" onclick="openLightbox(this)">
+                        <img src="case12_5.png" alt="Marker Gene Excel Report - Heatmap Validated">
+                        <div class="photo-caption"><span class="photo-num">Fig 5</span> Highlighting significant LogFC changes for rare sub-populations.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
